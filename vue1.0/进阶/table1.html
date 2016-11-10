@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width maximum-scalae=1 minimum-scale=1 initial-scale=1 user-scalable=no" >
+    <title>模版</title>
+    <script src="../js/vue.js"></script>
+    <style>
+        table,td{
+            border:1px solid gray;
+        }
+
+        table{
+            background:darkslategray;
+            border-collapse: collapse;
+        }
+
+        td{
+            width:50px;
+            height:30px;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="load()">点击</button>
+    <div id="app"></div>
+    <script>
+        var obj = {
+            items:[
+                {id:"ID",name:"NAME",des:"描述",clickButton:"点击事件"},
+                {id:"1",name:"Tom",des:"北京",clickButton:"点击窗口"},
+                {id:"2",name:"Jack",des:"上海",clickButton:"点击窗口"},
+                {id:"3",name:"Rose",des:"杭州",clickButton:"点击窗口"},
+                {id:"4",name:"China",des:"南京",clickButton:"点击窗口"},
+            ]
+        }
+
+        var vm = new Vue({
+            data:obj,
+            template:'<table><tr v-for="item in items">' +
+            '<td>{{item.id}}</td>' +
+            '<td>{{item.name}}</td>' +
+            '<td>{{item.des}}</td>' +
+            '<td><button v-on:click="alert($index)">{{item.clickButton}}</button></td>' +
+            '</tr></table>',
+            methods:{
+                alert:function (index) {
+                    alert("这是第" + (index + 1) + "行");
+                }
+            }
+        })
+
+        function load(){
+            vm.$mount("#app");
+        }
+    </script>
+</body>
+</html>

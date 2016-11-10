@@ -16,14 +16,14 @@
     -->
     <div id="app">
         <p v-el:msg>这是一个实验语句1</p>
-        <p v-el:other-msg>这是实验语句2</p>
+        <p v-el:other>这是实验语句2</p>
     </div>
     <script>
         new Vue({
             el:"#app",
             created:function () {
                 console.log(this.$els.msg.textContent) // -> "hello"
-                console.log(this.$els.other-msg.textContent) // -> "world"
+                console.log(this.$els.other.textContent) // -> "world"
             }
         })
 

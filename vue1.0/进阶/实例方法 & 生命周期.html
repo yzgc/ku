@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width maximum-scalae=1 minimum-scale=1 initial-scale=1 user-scalable=no" >
+    <title>模版</title>
+    <script src="../js/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+
+
+
+    <!--<div id="app">-->
+        <!--<my></my>-->
+    <!--</div>-->
+
+    <div id="app">
+        <p>hello</p>
+    </div>
+
+    <script>
+
+//        Vue.component('my',{
+//            template:'<div>this is $mount</div>'
+//        })
+        var vm = new Vue({
+
+        })
+
+        var MyComponent = Vue.extend({
+            template:'<p>this is vue example</p>'
+        })
+//        new MyComponent().$mount('#app');
+//        new MyComponent({el:"#app"})
+
+    //注意 以上两种挂载方式会替换原有的
+    //第三种会在后面添加
+        new MyComponent().$mount().$appendTo("#app");
+    </script>
+</body>
+</html>

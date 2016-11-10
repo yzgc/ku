@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width maximum-scalae=1 minimum-scale=1 initial-scale=1 user-scalable=no" >
+    <title>模版</title>
+    <script src="../js/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p id="example">这是原始的一个p标签</p>
+    </div>
+    <script>
+        var MyComponent = Vue.extend({
+            template:'<div>双十一特价进行中</div>'
+        })
+
+//        Vue.component('my',{
+//            template:'<div>双十一特价进行中</div>'
+//        })
+
+
+
+        var vm = new Vue({
+         el:"#app"
+        })
+
+//        vm.$appendTo("#app",function () {
+//            console.log("已经加入")
+//        });
+//        vm.$before("#example");
+//        vm.$appendTo("#app");
+//        vm.$appendTo("#app");
+        new MyComponent().$appendTo("#app");
+    </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width maximum-scalae=1 minimum-scale=1 initial-scale=1 user-scalable=no" >
+    <title>模版</title>
+    <script src="../js/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+        <div id="app">
+            <h2>Single value</h2>
+            <test v-ref:single v-for="v in single" :value="v"></test>
+            <h2>Multiple values</h2>
+            <test v-ref:multi v-for="v in multi" :value="v"></test>
+            <h2>Types</h2>
+            <p>$refs.single: {{$refs.single | isarray}}</p>
+            <p>$refs.multi: {{$refs.multi | isarray}}</p>
+        </div>
+
+    <script>
+        Vue.config.debug = true;
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    single: [1],
+                    multi: [1, 2, 3]
+                }
+            },
+            components: {
+                test: {
+                    props: ['value'],
+                    template: '<p>{{value}}</p>'
+                }
+            },
+            filters: {
+                isarray(value) {
+                    return Array.isArray(value);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
