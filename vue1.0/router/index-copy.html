@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="js/vue.js"></script>
+    <script src="js/vue-router.js"></script>
+    <style>
+        .list-item1 {
+            display:inline-block;
+            width:50px;
+            height:30px;
+            text-align: center;
+            line-height: 30px;
+            background-color: pink;
+        }
+
+    </style>
+</head>
+<body>
+
+</body>
+
+
+    <div id="app">
+        <div class="list">
+            <a class="list-item1" v-link="{path:'/home'}">Home</a>
+            <a class="list-item1" v-link="{path:'/about'}">About</a>
+        </div>
+        <router-view></router-view>
+    </div>
+    <script>
+        var obj = {
+            items:[
+                {id:"ID",name:"NAME",des:"描述",clickButton:"点击事件"},
+                {id:"1",name:"Tom",des:"北京",clickButton:"点击窗口"},
+                {id:"2",name:"Jack",des:"上海",clickButton:"点击窗口"},
+                {id:"3",name:"Rose",des:"杭州",clickButton:"点击窗口"},
+                {id:"4",name:"China",des:"南京",clickButton:"点击窗口"}
+            ]
+        }
+        var Home = Vue.extend({
+            template:'<table><tr v-for="item in items">' +
+            '<td>{{item.id}}</td>' +
+            '<td>{{item.name}}</td>' +
+            '<td>{{item.des}}</td>' +
+            '<td>{{item.clickButton}}</td>' +
+            '</tr></table>'
+        });
+
+        var About = Vue.extend({
+            template:'<div>' +
+            '<ul>' +
+            '<li>导航1</li>' +
+            '<li>导航2</li>' +
+            '<li>导航3</li>' +
+            '<li>导航4</li>' +
+            '<li>导航5</li>' +
+            '</ul>' +
+            '</div>'
+        });
+
+        var router =   new VueRouter();
+
+        router.map({
+            '/home': { component: Home },
+            '/about': { component: About }
+        })
+
+        var APP = Vue.extend({});
+        router.start(APP,"#app");
+
+    </script>
+</html>
